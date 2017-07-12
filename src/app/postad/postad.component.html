@@ -1,0 +1,66 @@
+<div style="border-radius:5px;background-color:#f2f2f2;padding:40px;">
+<form name="form" class="test" method="POST" autocomplete="off" (ngSubmit)="f.form.valid && onSubmit(f)" #f="ngForm" novalidate>
+  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ad_title.valid }">
+    <label for="ad_title">Ad Title</label>
+    <input type="text" id="ad_title" name="ad_title" [(ngModel)]="model.ad_title" #ad_title="ngModel" placeholder="Enter Ad Title." required />
+    <div *ngIf="f.submitted && !ad_title.valid" class="help-block">title is required</div>
+  </div>
+
+  <br>
+  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ad_description.valid }">
+    <label for="ad_description">Description</label>
+    <input type="text" id="ad_description" name="ad_description" placeholder="Description.." [(ngModel)]="model.ad_description" #ad_description="ngModel" required />
+    <div *ngIf="f.submitted && !ad_description.valid" class="help-block">description is required</div>
+  </div>
+
+  <br>
+  <label for="image_url">Image URL</label>
+  <input type="text" id="image_url" name="image_url" placeholder="Image URL.." [(ngModel)]="model.image_url" #image_url="ngModel" readonly="" />
+
+  <br>
+  <label for="thumbnail">Image</label>
+  <img src="#" id="thumbnail" name="thumbnail" class="thumbnail" style=" height:150px; max-width:auto">
+  <input type="file" id="insert_image" name="insert_image" (change)="onChange($event)" />
+
+  <br>
+  <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !ad_category.valid }">
+    <label for="ad_category">Category</label>
+    <input type="text" list="languages" id="ad_category" name="ad_category" placeholder="Category.." [(ngModel)]="model.ad_category" #ad_category="ngModel" placeholder="Enter category." required />
+    <datalist id="languages">
+        <option value="buy" >
+        <option value="sell" >
+        <option value="real estate" >
+        <option value="cars" >
+    </datalist>
+    <div *ngIf="f.submitted && !ad_category.valid" class="help-block">category is required</div>
+  </div>
+
+  <br>
+  <div>
+    <label for="ad_field10">Field 10</label>
+    <input type="text" list="field10_list" id="ad_field10" name="ad_field10" [(ngModel)]="model.ad_field10" #ad_field10="ngModel">
+    <datalist id="field10_list">
+        <option value="Red" >
+        <option value="Blue" >
+    </datalist>
+  </div>
+
+  <br>
+  <div>
+    <label for="ad_field11">Field 11</label>
+    <input type="text" list="field11_list" id="ad_field11" name="ad_field11" [(ngModel)]="model.ad_field11" #ad_field11="ngModel">
+    <datalist id="field11_list">
+        <option value="Blue" >
+        <option value="Black" >
+    </datalist>
+  </div>
+  
+  <br>
+  <div>
+    <a href="/search" class="nextbutton">Back</a> &nbsp;&nbsp;
+    <input type="submit" class="nextbutton" name="submit" value="Post Ad">
+  </div>
+
+</form>
+
+</div>

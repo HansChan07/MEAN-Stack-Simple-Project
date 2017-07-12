@@ -1,0 +1,37 @@
+  <div class="container">
+    <form name="form" class="test" method="POST" autocomplete="off" (ngSubmit)="onSearch(f)" #f="ngForm" novalidate>
+
+        <div style="text-align: right">
+            <h2 style="text-align: center">Search</h2>
+            <button type="button" name="post_ad" (click)="onPostAd()">Post Ad</button>
+        </div>
+      
+      <br><br><br><br><br><br>
+        <div class="form-group">
+            <input type="text" list="languages" id="category" name="category" style="width:15%" placeholder="Category" [(ngModel)]="model.category" #category="ngModel" />
+            <datalist id="languages">
+                <option value="buy" >
+                <option value="sell" >
+                <option value="real estate" >
+                <option value="cars" >
+            </datalist>
+
+            <input type="text" id="title" name="title" style="width:45%" placeholder="Ad Title" [(ngModel)]="model.title" #title="ngModel" />
+            <input type="text" id="location" name="location" style="width:25%" placeholder="Location" autocomplete="off" spellcheck="off" [(ngModel)]="model.location" #location="ngModel" />
+            <!--<button [disabled]="loading" style="width:10%; background-color: #4CAF50; border: none; color: white; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;" class="nextbutton">Search</button>-->
+            <input type="submit" id="submit" name="submit" style="width:10%; height: 32pt; background-color: #4CAF50; border: none; color: white; text-align: center; text-decoration: none; display: inline-block; font-size: 16px;" value="Post Ad">
+        </div>
+
+        <!--<br><br>
+        <div>
+            <select id="ad_category" name="ad_category">
+                <option value="-1">real eastate</option>
+                <option value="1" selected>cars</option>
+            </select>
+            <input type="text" id="ad_title" name="ad_title" [(ngModel)]="model.ad_title" #title="ngModel" />
+            <input type="text" id="ad_location" name="ad_location" [(ngModel)]="model.ad_location" #title="ngModel" />
+            <button [disabled]="loading" class="nextbutton">Search</button>
+        </div>-->
+
+    </form>
+  </div>
