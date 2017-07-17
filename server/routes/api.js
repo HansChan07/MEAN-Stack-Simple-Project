@@ -27,7 +27,7 @@ router.post('/postonead', function(req, res, next) {
   form.parse(req, function(err, fields, files) {
 
    var model = {};
-      console.log(fields);
+      // console.log(fields);
     
     if (fields && fields != undefined) {
       if (fields.ad_title && fields.ad_title.length > 0)
@@ -88,14 +88,17 @@ router.post('/postonead', function(req, res, next) {
 
           var sss = model.image_binary;
           var base64Data = sss.replace(/^data:image\/png;base64,/, "");
-          require("fs").writeFile(model.image_name, base64Data, 'base64', function(err) {
+
+          fs.writeFile(__dirname + "/../upload_image/" + model.image_name, base64Data, 'base64', function(err) {
             console.log(err);
           });
-
+          
+          // res.json('{status: success}');
       }
       else {
           model.image_binary = '';
           console.log("file doesn't uploaded!");
+          // res.json('{status: failed}');
       }
 
 
@@ -113,10 +116,11 @@ router.post('/postonead', function(req, res, next) {
 
       Product.create(adData, function (err, post) {
         if (err) return next(err);
-        res.json(post);
+        // res.json(post);
       });
 
       console.log("============= received request ===========");
+      res.json('{status: success}');
     } else {
       model = {};
       console.log("status: failed");
